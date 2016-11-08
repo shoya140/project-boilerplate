@@ -15,9 +15,6 @@ def background_run(cmd):
 @task
 def deploy(sync_input=False, sync_working=False, delete=False):
   run("mkdir -p %s/" % remote_dir)
-  run("mkdir -p %s/data/working/" % remote_dir)
-  run("mkdir -p %s/data/output/" % remote_dir)
-  run("mkdir -p %s/data/log/" % remote_dir)
   exclude = [".DS_Store", "*tmp*", "*.pyc", "data/log/", "data/output/"]
   if not sync_input:
     exclude.append("data/input/")
@@ -32,7 +29,7 @@ def deploy(sync_input=False, sync_working=False, delete=False):
 
   with cd(remote_dir):
     # Register tasks here
-    # background_run("python ./script/hello.py")
+    # background_run("python ./code/hello.py")
     pass
 
 @task
