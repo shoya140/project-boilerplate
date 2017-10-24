@@ -1,4 +1,5 @@
 #coding: utf-8
+
 import os
 from fabric.api import task, local, run, env, cd
 from fabric.contrib.project import rsync_project
@@ -15,11 +16,11 @@ def background_run(cmd):
 @task
 def deploy(sync_input=False, sync_working=False, delete=False):
   run("mkdir -p %s/" % remote_dir)
-  exclude = [".DS_Store", "*tmp*", "*.pyc", "data/log/", "data/output/"]
+  exclude = [".DS_Store", "*tmp*", "*.pyc", "data/output/"]
   if not sync_input:
     exclude.append("data/input/")
   if not sync_working:
-    exclude.append("data/working")
+    exclude.append("data/working/")
   rsync_project(
       local_dir=local_dir+"/",
       remote_dir=remote_dir+"/",
@@ -33,10 +34,7 @@ def deploy(sync_input=False, sync_working=False, delete=False):
     pass
 
 @task
-def fetch(sync_log=True, sync_working=True, sync_output=True):
-  if sync_log:
-    local("mkdir -p %s/data/log/" % local_dir)
-    local("rsync -auvz %s:%s/data/log/ %s/data/log/" % (env.hosts[0], remote_dir, local_dir))
+def fetch(sync_working=True, sync_output=True):
   if sync_working:
     local("mkdir -p %s/data/working/" % local_dir)
     local("rsync -auvz %s:%s/data/working/ %s/data/working/" % (env.hosts[0], remote_dir, local_dir))

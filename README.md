@@ -9,7 +9,10 @@
 │   ├── log/
 │   └── working/
 ├── fabfile.py
-└── script/
+└── code/
+    ├── lib/
+    ├── ipynb/
+    └── script/
 ```
 
 ```

@@ -1,5 +1,17 @@
-data/
-.ipynb_checkpoints/*
+# global
+*~
+*.swp
+.DS_Store
 
-*.pyc
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# data
+data/input
+data/input/**
+data/working/**
+data/output/**
+
 !.gitkeep
