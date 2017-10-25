@@ -6,7 +6,6 @@
 ├── data/
 │   ├── input/
 │   ├── output/
-│   ├── log/
 │   └── working/
 ├── fabfile.py
 └── code/

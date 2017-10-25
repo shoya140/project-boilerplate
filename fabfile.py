@@ -30,7 +30,7 @@ def deploy(sync_input=False, sync_working=False, delete=False):
 
   with cd(remote_dir):
     # Register tasks here
-    # background_run("python ./code/hello.py")
+    # background_run("python ./code/script/hello.py")
     pass
 
 @task
